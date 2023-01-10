@@ -29,7 +29,7 @@ if __name__ == "__main__":
 		for sock in rList:
 			if sock == server_socket:
 				sockfd, addr = server_socket.accept()
-				name=sockfd.recv(buffer)
+				name=sockfd.recv(buffer).decode()
 				connected_list.append(sockfd)
 				record[addr]=""
 				if name in record.values():
@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
 			else:
 				try:
-					data1 = sock.recv(buffer)
+					data1 = sock.recv(buffer).decode()
 					data=data1[:data1.index("\n")]
 					i,p=sock.getpeername()
 					if data == "exit":

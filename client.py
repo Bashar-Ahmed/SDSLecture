@@ -23,7 +23,7 @@ def main():
                     print ('\33[31m\33[1m \rDISCONNECTED!!\n \33[0m')
                     sys.exit()
                 else :
-                    sys.stdout.write(data)
+                    sys.stdout.write(data.decode())
                     display()
             else :
                 msg=sys.stdin.readline()
