@@ -10,7 +10,7 @@ def main():
     name=input("\33[34m\33[1m CREATING NEW ID:\n Enter username: \33[0m")
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(("20.235.76.21", port))
-    s.send(name)
+    s.send(name.encode())
     display()
 
     while 1:
@@ -27,7 +27,7 @@ def main():
                     display()
             else :
                 msg=sys.stdin.readline()
-                s.send(msg)
+                s.send(msg.encode())
                 display()
 
 if __name__ == "__main__":

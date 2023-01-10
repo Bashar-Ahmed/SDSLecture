@@ -4,7 +4,7 @@ def send_to_all (sock, message):
 	for socket in connected_list:
 		if socket != server_socket and socket != sock :
 			try :
-				socket.send(message)
+				socket.send(message.encode())
 			except :
 				socket.close()
 				connected_list.remove(socket)
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 				connected_list.append(sockfd)
 				record[addr]=""
 				if name in record.values():
-					sockfd.send("\r\33[31m\33[1m Username already taken!\n\33[0m")
+					sockfd.send("\r\33[31m\33[1m Username already taken!\n\33[0m".encode())
 					del record[addr]
 					connected_list.remove(sockfd)
 					sockfd.close()
@@ -41,7 +41,7 @@ if __name__ == "__main__":
 				else:
 					record[addr]=name
 					print ("Client (%s, %s) connected" % addr," [",record[addr],"]")
-					sockfd.send("\33[32m\r\33[1m Welcome to chat room. Enter 'tata' anytime to exit\n\33[0m")
+					sockfd.send("\33[32m\r\33[1m Welcome to chat room. Enter 'tata' anytime to exit\n\33[0m".encode())
 					send_to_all(sockfd, "\33[32m\33[1m\r "+name+" joined the conversation \n\33[0m")
 
 			else:
